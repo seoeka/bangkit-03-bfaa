@@ -2,7 +2,7 @@ package com.seoeka.githubuser.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class GithubResponse(
+data class GithubResponse (
 
 	@field:SerializedName("total_count")
 	val totalCount: Int? = null,
@@ -11,10 +11,10 @@ data class GithubResponse(
 	val incompleteResults: Boolean? = null,
 
 	@field:SerializedName("items")
-	val items: List<ItemsItem?>? = null
+	val items: List<UserItems?>? = null
 )
 
-data class ItemsItem(
+data class UserItems (
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String? = null,
