@@ -38,4 +38,14 @@
         <item name="postSplashScreenTheme">@style/Base.Theme.GithubUser</item>
         <item name="maxImageSize">24dp</item>
     </style>
+
+    <style name="textStyleUsername" parent="Theme.GithubUser">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">1</item>
+    </style>
+
 </resources>

@@ -17,7 +17,7 @@ interface ApiService {
     @Headers("Authorization: token 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")
     fun getDetailUser(
         @Path("username") username : String
-    ): Call<GithubResponse>
+    ): Call<DetailUserResponse>
     @GET("users/{username}/followers")
     @Headers("Authorization: token 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")
     fun getListFollower(
