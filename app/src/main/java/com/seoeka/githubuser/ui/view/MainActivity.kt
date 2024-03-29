@@ -1,4 +1,4 @@
-package com.seoeka.githubuser.ui
+package com.seoeka.githubuser.ui.view
 
 import android.app.SearchManager
 import android.content.Context
