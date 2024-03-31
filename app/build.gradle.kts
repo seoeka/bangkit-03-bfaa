@@ -100,5 +100,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
-
+    // Data Store & Room
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 }
