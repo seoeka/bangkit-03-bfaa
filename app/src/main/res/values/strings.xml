@@ -13,4 +13,6 @@
     <string name="setting">Setting</string>
     <string name="share">Share</string>
     <string name="dark_mode">Dark Mode</string>
+    <string name="empty_result">Username Not Found</string>
+    <string name="favorite_button">Favorite Button</string>
 </resources>

@@ -1,9 +1,12 @@
 package com.seoeka.githubuser.ui.mvvm.viewmodel
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.seoeka.githubuser.data.local.FavoriteRepository
+import com.seoeka.githubuser.data.local.room.FavoriteUser
 import com.seoeka.githubuser.data.response.DetailUserResponse
 import com.seoeka.githubuser.data.response.UserItems
 import com.seoeka.githubuser.data.retrofit.ApiConfig
@@ -12,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel(application: Application) : ViewModel() {
     private val _userDetail = MutableLiveData<DetailUserResponse>()
     val userDetail: LiveData<DetailUserResponse> = _userDetail
 
@@ -28,14 +31,22 @@ class DetailViewModel : ViewModel() {
     private val _isLoadingFollow = MutableLiveData<Boolean>()
     val isLoadingFollow: LiveData<Boolean> = _isLoadingFollow
 
-    companion object{
-        private const val TAG = "MainViewModel"
-    }
+    private val mFavoriteUserRepository: FavoriteRepository = FavoriteRepository(application)
 
     init {
         getUser(DetailActivity.username)
         getUserFollower(DetailActivity.username)
         getUserFollowing(DetailActivity.username)
+    }
+
+    fun getFavoriteUser(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.getFavoriteUser(favoriteUser)
+    }
+
+    fun getFavoriteUser(username: String): LiveData<FavoriteUser> = mFavoriteUserRepository.getFavoriteByUsername(username)
+
+    fun deleteFavoriteUser(favoriteUser: FavoriteUser) {
+        mFavoriteUserRepository.deleteFavoriteUser(favoriteUser)
     }
 
     fun getUser(username: String) {
@@ -103,5 +114,8 @@ class DetailViewModel : ViewModel() {
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
         })
+    }
+    companion object{
+        private const val TAG = "MainViewModel"
     }
 }
