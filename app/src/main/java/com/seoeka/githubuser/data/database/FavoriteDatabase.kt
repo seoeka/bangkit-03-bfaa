@@ -1,4 +1,4 @@
-package com.seoeka.githubuser.data.local.room
+package com.seoeka.githubuser.data.database
 
 import android.content.Context
 import androidx.room.Database

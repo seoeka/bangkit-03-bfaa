@@ -1,10 +1,10 @@
-package com.seoeka.githubuser.data.local
+package com.seoeka.githubuser.data.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import com.seoeka.githubuser.data.local.room.FavoriteDao
-import com.seoeka.githubuser.data.local.room.FavoriteDatabase
-import com.seoeka.githubuser.data.local.room.FavoriteUser
+import com.seoeka.githubuser.data.database.FavoriteDao
+import com.seoeka.githubuser.data.database.FavoriteDatabase
+import com.seoeka.githubuser.data.database.FavoriteUser
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

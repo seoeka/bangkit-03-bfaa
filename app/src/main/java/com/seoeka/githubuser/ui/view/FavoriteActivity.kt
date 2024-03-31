@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.seoeka.githubuser.R
@@ -34,13 +35,24 @@ class FavoriteActivity : AppCompatActivity() {
 
         favoriteUserViewModel.getAllFavUser().observe(this) { users ->
             val items = arrayListOf<UserItems>()
-            users!!.map {
-                val item = UserItems(login = it.username, avatarUrl = it.avatarUrl)
-                items.add(item)
+            users?.let {
+                if (it.isEmpty()) {
+                    binding?.rvFavUsers?.visibility = View.GONE
+                    binding?.textEmptyFavorite?.visibility = View.VISIBLE
+                } else {
+                    binding?.rvFavUsers?.visibility = View.VISIBLE
+                    binding?.textEmptyFavorite?.visibility = View.GONE
+
+                    it.map { user ->
+                        val item = UserItems(login = user.username, avatarUrl = user.avatarUrl)
+                        items.add(item)
+                    }
+                    binding?.rvFavUsers?.adapter = ListUserAdapter(items)
+                }
             }
-            binding?.rvFavUsers?.adapter = ListUserAdapter(items)
         }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_share, menu)

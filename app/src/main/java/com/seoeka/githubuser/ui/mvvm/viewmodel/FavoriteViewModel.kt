@@ -3,8 +3,8 @@ package com.seoeka.githubuser.ui.mvvm.viewmodel
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.seoeka.githubuser.data.local.FavoriteRepository
-import com.seoeka.githubuser.data.local.room.FavoriteUser
+import com.seoeka.githubuser.data.repository.FavoriteRepository
+import com.seoeka.githubuser.data.database.FavoriteUser
 
 
 class FavoriteViewModel(application: Application) : ViewModel() {

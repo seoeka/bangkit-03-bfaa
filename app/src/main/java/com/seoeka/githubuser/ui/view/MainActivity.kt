@@ -78,8 +78,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUserData(users: List<UserItems>) {
-        val adapter = ListUserAdapter(users)
-        binding.recyclerView.adapter = adapter
+        if (users.isEmpty()) {
+            binding.recyclerView.visibility = View.GONE
+            binding.textEmptyResult.visibility = View.VISIBLE
+        } else {
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.textEmptyResult.visibility = View.GONE
+            val adapter = ListUserAdapter(users)
+            binding.recyclerView.adapter = adapter
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

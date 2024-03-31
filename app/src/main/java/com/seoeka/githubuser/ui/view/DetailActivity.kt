@@ -11,13 +11,12 @@ import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.seoeka.githubuser.R
-import com.seoeka.githubuser.data.local.room.FavoriteUser
+import com.seoeka.githubuser.data.database.FavoriteUser
 import com.seoeka.githubuser.data.response.DetailUserResponse
 import com.seoeka.githubuser.databinding.ActivityDetailBinding
 import com.seoeka.githubuser.ui.adapter.SectionsPagerAdapter

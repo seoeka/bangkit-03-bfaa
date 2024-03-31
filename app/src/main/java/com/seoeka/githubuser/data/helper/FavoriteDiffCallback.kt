@@ -1,7 +1,7 @@
 package com.seoeka.githubuser.data.helper
 
 import androidx.recyclerview.widget.DiffUtil
-import com.seoeka.githubuser.data.local.room.FavoriteUser
+import com.seoeka.githubuser.data.database.FavoriteUser
 
 class FavoriteDiffCallback (private val mOldFavoriteUserList: List<FavoriteUser>, private val mNewFavoriteUserList: List<FavoriteUser>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {

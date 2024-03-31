@@ -1,4 +1,4 @@
-package com.seoeka.githubuser.data.local.room
+package com.seoeka.githubuser.data.database
 
 import android.os.Parcelable
 import androidx.room.Entity

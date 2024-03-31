@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.seoeka.githubuser.data.local.FavoriteRepository
-import com.seoeka.githubuser.data.local.room.FavoriteUser
+import com.seoeka.githubuser.data.repository.FavoriteRepository
+import com.seoeka.githubuser.data.database.FavoriteUser
 import com.seoeka.githubuser.data.response.DetailUserResponse
 import com.seoeka.githubuser.data.response.UserItems
 import com.seoeka.githubuser.data.retrofit.ApiConfig

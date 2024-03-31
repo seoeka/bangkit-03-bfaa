@@ -1,4 +1,4 @@
-package com.seoeka.githubuser.data.local.room
+package com.seoeka.githubuser.data.database
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete

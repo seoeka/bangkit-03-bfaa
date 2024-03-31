@@ -29,8 +29,4 @@ data class UserItems (
 
 	@field:SerializedName("html_url")
 	val htmlUrl: String? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null,
-
 )
