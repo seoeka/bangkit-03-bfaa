@@ -23,6 +23,8 @@ class SettingActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_share, menu)
+        menu.removeItem(R.id.share)
+
         return true
     }
 
