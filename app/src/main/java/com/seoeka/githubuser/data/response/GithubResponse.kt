@@ -71,5 +71,5 @@ data class UserItems (
 	val nodeId: String? = null,
 
 	@field:SerializedName("organizations_url")
-	val organizationsUrl: String? = null
+	val organizationsUrl: String? = null,
 )

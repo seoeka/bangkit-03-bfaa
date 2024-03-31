@@ -1,10 +1,10 @@
-package com.seoeka.githubuser.ui.adapters
+package com.seoeka.githubuser.ui.adapter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.seoeka.githubuser.ui.view.TabFragment
+import com.seoeka.githubuser.ui.view.fragment.TabFragment
 
 class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     var username: String = "eka"

@@ -1,4 +1,4 @@
-package com.seoeka.githubuser.ui.adapters
+package com.seoeka.githubuser.ui.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -17,7 +17,7 @@ class ListUserAdapter (private val listUsers: List<UserItems>) : RecyclerView.Ad
         ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.list_user_row, viewGroup, false))
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.tvName.text = listUsers[position].login
+        viewHolder.tvUsername.text = listUsers[position].login
         Glide.with(viewHolder.itemView.context)
             .load(listUsers[position].avatarUrl)
             .into(viewHolder.imgPhoto)
@@ -32,6 +32,6 @@ class ListUserAdapter (private val listUsers: List<UserItems>) : RecyclerView.Ad
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.user_img)
-        val tvName: TextView = itemView.findViewById(R.id.user_name)
+        val tvUsername: TextView = itemView.findViewById(R.id.username)
     }
 }

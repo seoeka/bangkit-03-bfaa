@@ -1,4 +1,4 @@
-package com.seoeka.githubuser.ui.view
+package com.seoeka.githubuser.ui.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.seoeka.githubuser.R
 import com.seoeka.githubuser.data.response.UserItems
 import com.seoeka.githubuser.databinding.FragmentTabBinding
-import com.seoeka.githubuser.ui.adapters.ListUserAdapter
+import com.seoeka.githubuser.ui.adapter.ListUserAdapter
 import com.seoeka.githubuser.ui.mvvm.viewmodel.DetailViewModel
 
 
@@ -67,7 +66,7 @@ class TabFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTabBinding.inflate(layoutInflater)
 
         return binding.root

@@ -1,19 +1,19 @@
 package com.seoeka.githubuser.ui.view
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.appbar.MaterialToolbar
 import com.seoeka.githubuser.R
 import com.seoeka.githubuser.data.response.UserItems
 import com.seoeka.githubuser.databinding.ActivityMainBinding
-import com.seoeka.githubuser.ui.adapters.ListUserAdapter
+import com.seoeka.githubuser.ui.adapter.ListUserAdapter
 import com.seoeka.githubuser.ui.mvvm.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -23,21 +23,50 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val toolbar: MaterialToolbar = findViewById(R.id.topAppBar)
-        setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
 
+        binding.buttonSearch.setOnClickListener {
+            getUsers()
+        }
+
+        binding.editTextQuery.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
+                    (event != null && event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER)
+                ) {
+                    getUsers()
+                    return true
+                }
+                return false
+            }
+        })
+
         viewModel.listUsers.observe(this) { users ->
             setUserData(users as List<UserItems>)
         }
-        viewModel.isLoading.observe(this) {
+        viewModel.isLoadingState.observe(this) {
             showLoading(it)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                TODO()
+            }
+            R.id.setting -> {
+                TODO()
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -50,26 +79,12 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.toolbar_main, menu)
-
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search_fragment).actionView as SearchView
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.queryHint = resources.getString(R.string.search_hint)
-
-        val searchAutoComplete = searchView.findViewById<SearchView.SearchAutoComplete>(androidx.appcompat.R.id.search_src_text)
-        searchAutoComplete.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.getUsers(query)
-                searchView.clearFocus()
-                return true
-            }
-            override fun onQueryTextChange(newText: String): Boolean {
-                return false
-            }
-        })
-        return true
+    private fun getUsers() {
+        val query = binding.editTextQuery.text.toString().trim()
+        if (query.isNotEmpty()) {
+            viewModel.getUsers(query)
+        } else {
+            viewModel.showEmptyQueryError()
+        }
     }
 }

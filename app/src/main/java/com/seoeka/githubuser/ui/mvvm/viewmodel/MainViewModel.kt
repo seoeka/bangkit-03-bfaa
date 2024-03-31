@@ -9,21 +9,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MainViewModel : BaseViewModel()  {
     private val _listUsers = MutableLiveData<List<UserItems?>?>()
     val listUsers: LiveData<List<UserItems?>?> = _listUsers
-
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
-    companion object{
-        private const val TAG = "MainViewModel"
-        private const val DEFAULT_USER_ID = "eka"
-    }
     init {
         getUsers(DEFAULT_USER_ID)
     }
     fun getUsers(username: String) {
-        _isLoading.value = true
+        isLoading.value = true
         val client = ApiConfig.getApiService().getSearch(username)
         client.enqueue(object : Callback<GithubResponse>
          {
@@ -31,7 +24,7 @@ class MainViewModel : ViewModel() {
                 call: Call<GithubResponse>,
                 response: Response<GithubResponse>
             ) {
-                _isLoading.value = false
+                isLoading.value = false
                 if (response.isSuccessful) {
                     _listUsers.value = response.body()?.items
                 } else {
@@ -39,9 +32,17 @@ class MainViewModel : ViewModel() {
                 }
             }
             override fun onFailure(call: Call<GithubResponse>, t: Throwable) {
-                _isLoading.value = false
+                isLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
         })
+    }
+    fun showEmptyQueryError() {
+        isError.value = "Please enter a search query"
+    }
+
+    companion object{
+        private const val TAG = "MainViewModel"
+        private const val DEFAULT_USER_ID = "eka"
     }
 }
