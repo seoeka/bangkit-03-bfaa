@@ -1,5 +1,6 @@
 package com.seoeka.githubuser.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.Menu
@@ -64,7 +65,9 @@ class MainActivity : AppCompatActivity() {
                 TODO()
             }
             R.id.setting -> {
-                TODO()
+                val intent = Intent(this, SettingActivity::class.java)
+                startActivity(intent)
+                return true
             }
             else -> super.onOptionsItemSelected(item)
         }

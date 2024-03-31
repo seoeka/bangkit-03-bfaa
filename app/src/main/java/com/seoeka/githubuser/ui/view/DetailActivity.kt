@@ -25,16 +25,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val viewModel by viewModels<DetailViewModel>()
 
-    companion object {
-        const val username = "username"
-        const val avatarURL = "url"
-        @StringRes
-        private val TAB_TITLES = intArrayOf(
-            R.string.tab_title_1,
-            R.string.tab_title_2
-        )
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
@@ -119,5 +109,15 @@ class DetailActivity : AppCompatActivity() {
         binding.tvUserFollowing.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.tvUserFollower.visibility = if (isLoading) View.GONE else View.VISIBLE
         binding.userImg.visibility = if (isLoading) View.GONE else View.VISIBLE
+    }
+
+    companion object {
+        const val username = "username"
+        const val avatarURL = "url"
+        @StringRes
+        private val TAB_TITLES = intArrayOf(
+            R.string.tab_title_1,
+            R.string.tab_title_2
+        )
     }
 }

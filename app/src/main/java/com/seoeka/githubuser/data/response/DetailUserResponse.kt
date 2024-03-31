@@ -3,10 +3,6 @@ package com.seoeka.githubuser.data.response
 import com.google.gson.annotations.SerializedName
 
 data class DetailUserResponse(
-
-    @field:SerializedName("repos_url")
-    val reposUrl: String? = null,
-
     @field:SerializedName("following_url")
     val followingUrl: String? = null,
 
@@ -19,9 +15,6 @@ data class DetailUserResponse(
     @field:SerializedName("followers_url")
     val followersUrl: String? = null,
 
-    @field:SerializedName("url")
-    val url: String? = null,
-
     @field:SerializedName("followers")
     val followers: Int? = null,
 
@@ -30,7 +23,6 @@ data class DetailUserResponse(
 
     @field:SerializedName("html_url")
     val htmlUrl: String? = null,
-
 
     @field:SerializedName("following")
     val following: Int? = null,

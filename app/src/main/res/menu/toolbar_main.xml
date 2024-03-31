@@ -13,6 +13,6 @@
         android:id="@+id/setting"
         android:icon="@drawable/ic_settings"
         android:title="@string/setting"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         />
 </menu>

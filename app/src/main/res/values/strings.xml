@@ -12,4 +12,5 @@
     <string name="tab_title_2">FOLLOWING</string>
     <string name="setting">Setting</string>
     <string name="share">Share</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>
