@@ -15,6 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Suppress("unused", "unused", "unused", "unused")
 class DetailViewModel(application: Application) : ViewModel() {
     private val _userDetail = MutableLiveData<DetailUserResponse>()
     val userDetail: LiveData<DetailUserResponse> = _userDetail
